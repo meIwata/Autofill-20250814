@@ -1,0 +1,37 @@
+{
+  "name": "Autofill Jobs",
+  "version": "1.0.0",
+  "manifest_version": 3,
+  "description": "Fills in annoying job forms for you, with data from your resume & more.",
+  "action": {
+    "default_popup": "index.html"
+  },
+  "icons": {
+    "16": "icons/16.png",
+    "48": "icons/48.png",
+    "128": "icons/128.png"
+  },
+  "permissions": ["storage"],
+  "content_scripts": [
+    {
+      "js": [
+       
+        "content-scripts/utils.js",
+        "content-scripts/workday.js",
+        "content-scripts/autofill.js"
+      ],
+      "type": "module",
+      "matches": [
+        "https://job-boards.greenhouse.io/*",
+        "https://boards.greenhouse.io/*",
+        "https://jobs.lever.co/*",
+        "https://app.dover.com/*",
+        "https://*.workday.com/*",
+        "https://*.myworkdayjobs.com/*",
+        "https://docs.google.com/forms/*"
+      ],
+      "world": "ISOLATED",
+      "run_at": "document_end"
+    }
+  ]
+}
